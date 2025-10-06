@@ -116,7 +116,7 @@ public class DotsAndBoxesBoard {
         return true;
     }
 
-    void displayBoard() {
+    public void displayBoard() {
         for (int r = 0; r < rows; r++) {
             // Print top of boxes
             for (int c = 0; c < cols; c++) {
