@@ -1,3 +1,11 @@
+/**
+ * SlidingPuzzleGame
+ * Implementation of sliding tile puzzle game.
+ * Game loop includes player entering name and Board size,
+ * selecting which tiles to move, and tracking moves taken.
+ * Validates user input.
+ */
+
 import java.util.Scanner;
 
 public class SlidingPuzzleGame extends Game {

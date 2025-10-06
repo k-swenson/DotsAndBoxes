@@ -1,3 +1,9 @@
+/**
+ * Board
+ * Abstract base class for all 2D game boards.
+ * Defines common board properties and constraints.
+ */
+
 public abstract class Board {
     protected int rows;
     protected int cols;

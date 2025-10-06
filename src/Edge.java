@@ -1,3 +1,10 @@
+/**
+ * Edge
+ * Piece subclass for DotsAndBoxesBoard, holds information about
+ * horizontal or vertical and its owner.
+ * Represents a line in the Dots and Boxes game.
+ */
+
 public class Edge extends Piece{
     private boolean horizontal;
     private Player takenBy;

@@ -1,3 +1,11 @@
+/**
+ * Tile
+ * Represents a tile in the sliding puzzle game.
+ * Each tile has an integer value.
+ * If that value is zero then it represents the
+ * empty tile.
+ */
+
 public class Tile extends Piece {
     private int value;
 

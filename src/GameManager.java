@@ -1,3 +1,10 @@
+/**
+ * GameManager
+ * Manages game selection interface and menu
+ * Allows users to choose between different games:
+ * DotsAndBoxes or SlidingPuzzle.
+ */
+
 import java.util.Scanner;
 
 public class GameManager {

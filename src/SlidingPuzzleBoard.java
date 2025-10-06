@@ -1,3 +1,11 @@
+/**
+ * SlidingPuzzleBoard
+ * Represents game board for sliding tile puzzle.
+ * Manages 2d grid of numbered tiles.
+ * Tiles can be slid into the empty space.
+ * Shuffle starts from solves state and does random moves.
+ */
+
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;

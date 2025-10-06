@@ -1,3 +1,9 @@
+/**
+ * Piece
+ * Abstract base class of a piece on a game board.
+ * Stores postion on board.
+ */
+
 public class Piece {
     protected int row;
     protected int col;

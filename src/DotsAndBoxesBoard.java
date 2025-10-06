@@ -1,3 +1,12 @@
+/**
+ * DotsAndBoxesBoard
+ * Represents 2D game board for dots and boxes
+ * Instead of a traditional 2D array for pieces,
+ * class uses two 2d arrays of horizontal and vertical
+ * edges to check when a box is closed.
+ * Box winners are stored in its own 2d array.
+ */
+
 public class DotsAndBoxesBoard extends Board {
     private final int MIN_ROWS = 1;
     private final int MIN_COLS = 1;

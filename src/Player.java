@@ -1,3 +1,9 @@
+/**
+ * Player
+ * Represents a player in any game.
+ * Tracks player's name and score.
+ */
+
 public class Player {
     private String name;
     private int score;
