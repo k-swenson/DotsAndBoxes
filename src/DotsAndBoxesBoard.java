@@ -31,17 +31,18 @@ public class DotsAndBoxesBoard {
     public boolean takeEdge(int row, int col, String direction, Player player) {
         String dir = direction.toLowerCase();
         switch (dir) {
-            case "u":   // UP: Vertical Edge above node
-                if (row-1 < 0 || row-1 >= rows || col < 0 || col > cols) {
+            case "u": {   // UP: Vertical Edge above node
+                if (row - 1 < 0 || row - 1 >= rows || col < 0 || col > cols) {
                     return false;   // Tried taking out of bounds edge
                 }
-                Edge e = verticalEdges[row-1][col];
+                Edge e = verticalEdges[row - 1][col];
                 if (e.isTaken()) {
                     return false;   // Tried taking already taken edge
                 }
                 e.take(player);
                 break;
-            case "d":   // DOWN: Vertical Edge below node
+            }
+            case "d": {   // DOWN: Vertical Edge below node
                 if (row < 0 || row >= rows || col < 0 || col > cols) {
                     return false;
                 }
@@ -51,17 +52,19 @@ public class DotsAndBoxesBoard {
                 }
                 e.take(player);
                 break;
-            case "l":   // LEFT: Horizontal Edge to the left of node
-                if (row < 0 || row > rows || col-1 < 0 || col-1 >= cols) {
+            }
+            case "l": {   // LEFT: Horizontal Edge to the left of node
+                if (row < 0 || row > rows || col - 1 < 0 || col - 1 >= cols) {
                     return false;
                 }
-                Edge e = horizontalEdges[row][col-1];
+                Edge e = horizontalEdges[row][col - 1];
                 if (e.isTaken()) {
                     return false;
                 }
                 e.take(player);
                 break;
-            case "r":   // RIGHT: Horizontal Edge to the right of node
+            }
+            case "r": {   // RIGHT: Horizontal Edge to the right of node
                 if (row < 0 || row >= rows || col < 0 || col > cols) {
                     return false;
                 }
@@ -71,10 +74,12 @@ public class DotsAndBoxesBoard {
                 }
                 e.take(player);
                 break;
+            }
             default:
                 return false;   // Invalid direction
         }
-
+        checkForFullBoxes(player);
+        return true;
     }
 
     private void checkForFullBoxes(Player player) {
