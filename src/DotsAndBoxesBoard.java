@@ -65,7 +65,7 @@ public class DotsAndBoxesBoard {
                 break;
             }
             case "r": {   // RIGHT: Horizontal Edge to the right of node
-                if (row < 0 || row >= rows || col < 0 || col > cols) {
+                if (row < 0 || row > rows || col < 0 || col >= cols) {
                     return false;
                 }
                 Edge e = horizontalEdges[row][col];
@@ -88,7 +88,7 @@ public class DotsAndBoxesBoard {
                 if (boxWinners[r][c] == '\u0000') {
                     if (horizontalEdges[r][c].isTaken() &&  // check four surrounding edges
                             horizontalEdges[r+1][c].isTaken() &&
-                            horizontalEdges[r][c].isTaken() &&
+                            verticalEdges[r][c].isTaken() /*shawn changed this to verticalEdges*/&&
                             verticalEdges[r][c+1].isTaken()) {
                         boxWinners[r][c] = player.getName().charAt(0);
                         player.incrementScore();
