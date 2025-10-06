@@ -18,8 +18,8 @@ public class GameManager {
 
             switch (choice) {
                 case 1:
-                    DotsAndBoxesGame game = new DotsAndBoxesGame(scanner);  // change this!!!!
-                    game.run();
+                    currentGame = new DotsAndBoxesGame(scanner);  // change this!!!!
+                    currentGame.run();
                     break;
                 case 2:
                     currentGame = new SlidingPuzzleGame(scanner);
