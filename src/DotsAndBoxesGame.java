@@ -1,4 +1,10 @@
-import java.util.*;
+/**
+ * DotsAndBoxesGame
+ * Runs the terminal Dots and Boxes: reads players/board, manages turns and input,
+ * applies moves via DotsAndBoxesBoard, and prints results.
+ */
+
+ import java.util.*;
 
 public class DotsAndBoxesGame {
     private DotsAndBoxesBoard board;
