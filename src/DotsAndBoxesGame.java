@@ -9,10 +9,15 @@
 public class DotsAndBoxesGame {
     private DotsAndBoxesBoard board;
     private boolean keepPlaying; 
-    private Player[] players = new Player[2];
-    private int curPlayerIdx = 0; //current player index
-    private Scanner in = new Scanner(System.in);
-    
+    private Player[] players;
+    private int curPlayerIdx; //current player index
+    private Scanner in;
+
+    public DotsAndBoxesGame(Scanner scanner) {
+        this.players = new Player[2];
+        curPlayerIdx = 0;
+        this.in = scanner;
+    }
 
     public void run() {
 
