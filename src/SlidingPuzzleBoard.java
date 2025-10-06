@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SlidingPuzzleBoard extends Board{
-    private final int ROW_MAX = 50;
-    private final int COL_MAX = 50;
-    private final int ROW_MIN = 2;
-    private final int COL_MIN = 2;
+    private final int MAX_ROWS = 50;
+    private final int MAX_COLS = 50;
+    private final int MIN_ROWS = 2;
+    private final int MIN_COLS = 2;
 
     private Tile[][] grid;
     private Tile[][] solvedState;
@@ -16,8 +16,12 @@ public class SlidingPuzzleBoard extends Board{
 
     public SlidingPuzzleBoard(int rows, int cols) {
         super(rows, cols);
-        if (!validSize(rows, cols)) {
-            throw new IllegalArgumentException("Rows and columns must be between " + ROW_MIN + " and " + ROW_MAX);
+        maxRow = MAX_ROWS;
+        maxCol = MAX_COLS;
+        minRow = MIN_ROWS;
+        minCol = MIN_COLS;
+        if (!validSize()) {
+            throw new IllegalArgumentException("Rows and columns must be between " + minRow + " and " + maxRow);
         }
         this.solvedState = new Tile[rows][cols];
         this.grid = new Tile[rows][cols];
@@ -25,10 +29,6 @@ public class SlidingPuzzleBoard extends Board{
         initialize();
         shuffle();
         this.displayOffset = calculateDigits(rows*cols-1);
-    }
-
-    protected boolean validSize(int rows, int cols) {
-        return (rows >= ROW_MIN && cols >= COL_MIN && rows <= ROW_MAX && cols <= COL_MAX);
     }
 
     public void makeSolvedState() {
