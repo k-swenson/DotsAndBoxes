@@ -7,7 +7,9 @@ public class SlidingPuzzleBoard extends Board{
     private final int COL_MAX = 50;
     private final int ROW_MIN = 2;
     private final int COL_MIN = 2;
-    private int[][] solvedState;
+
+    private Tile[][] grid;
+    private Tile[][] solvedState;
     private int emptyRow;
     private int emptyCol;
     private int displayOffset;
@@ -17,9 +19,10 @@ public class SlidingPuzzleBoard extends Board{
         if (!validSize(rows, cols)) {
             throw new IllegalArgumentException("Rows and columns must be between " + ROW_MIN + " and " + ROW_MAX);
         }
-        this.solvedState = new int[rows][cols];
+        this.solvedState = new Tile[rows][cols];
+        this.grid = new Tile[rows][cols];
         makeSolvedState();
-        resetBoard();
+        initialize();
         shuffle();
         this.displayOffset = calculateDigits(rows*cols-1);
     }
@@ -29,20 +32,20 @@ public class SlidingPuzzleBoard extends Board{
     }
 
     public void makeSolvedState() {
-        int tile = 1;
+        int counter = 1;
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                solvedState[r][c] = tile;
-                tile++;
+                solvedState[r][c] = new Tile(r, c, counter);
+                counter++;
             }
         }
-        solvedState[rows - 1][cols - 1] = 0;   // empty space
+        solvedState[rows - 1][cols - 1].setValue(0);   // empty space
     }
 
-    public void resetBoard() {
+    protected void initialize() {
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                grid[r][c] = solvedState[r][c];
+                grid[r][c] = new Tile(r, c, solvedState[r][c].getValue());
             }
         }
         emptyRow = rows - 1;
@@ -51,7 +54,7 @@ public class SlidingPuzzleBoard extends Board{
 
     public void shuffle() {
         do {
-            resetBoard();
+            initialize();
             int shuffles = rows * cols * rows * cols;
 
             Random random = new Random();
@@ -81,8 +84,8 @@ public class SlidingPuzzleBoard extends Board{
                 int[] random_pick = adjacent_tiles.get(random.nextInt(adjacent_tiles.size()));
 
                 // Swap with empty tile
-                grid[emptyRow][emptyCol] = grid[random_pick[0]][random_pick[1]];
-                grid[random_pick[0]][random_pick[1]] = 0;
+                grid[emptyRow][emptyCol].setValue(grid[random_pick[0]][random_pick[1]].getValue());
+                grid[random_pick[0]][random_pick[1]].setValue(0);
 
                 // Set empty tile coords
                 emptyRow = random_pick[0];
@@ -106,7 +109,7 @@ public class SlidingPuzzleBoard extends Board{
             System.out.println(divider);
             StringBuilder ln = new StringBuilder();
             for (int c = 0; c < cols; c++) {
-                int tile = grid[r][c];
+                int tile = grid[r][c].getValue();
                 int offset = displayOffset - calculateDigits(tile);
                 StringBuilder empty = new StringBuilder();
                 for (int d = 0; d < offset; d++) {
@@ -123,7 +126,7 @@ public class SlidingPuzzleBoard extends Board{
     public boolean isSolved() {
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                if (grid[r][c] != solvedState[r][c]) {
+                if (!Tile.compare(grid[r][c], solvedState[r][c])) {
                     return false;
                 }
             }
@@ -138,26 +141,26 @@ public class SlidingPuzzleBoard extends Board{
 
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                if (grid[r][c] == 0) { // Find the empty space
+                if (grid[r][c].isEmpty()) { // Find the empty space
                     // Check adjacent tiles
-                    if (r > 0 && grid[r - 1][c] == tile) { // Up
-                        grid[r][c] = tile;
-                        grid[r - 1][c] = 0;
+                    if (r > 0 && grid[r - 1][c].getValue() == tile) { // Up
+                        grid[r][c].setValue(tile);
+                        grid[r - 1][c].setValue(0);
                         return true;
                     }
-                    if (r < rows - 1 && grid[r + 1][c] == tile) { // Down
-                        grid[r][c] = tile;
-                        grid[r + 1][c] = 0;
+                    if (r < rows - 1 && grid[r + 1][c].getValue() == tile) { // Down
+                        grid[r][c].setValue(tile);
+                        grid[r + 1][c].setValue(0);
                         return true;
                     }
-                    if (c > 0 && grid[r][c - 1] == tile) { // Left
-                        grid[r][c] = tile;
-                        grid[r][c - 1] = 0;
+                    if (c > 0 && grid[r][c - 1].getValue() == tile) { // Left
+                        grid[r][c].setValue(tile);
+                        grid[r][c - 1].setValue(0);
                         return true;
                     }
-                    if (c < cols - 1 && grid[r][c + 1] == tile) { // Right
-                        grid[r][c] = tile;
-                        grid[r][c + 1] = 0;
+                    if (c < cols - 1 && grid[r][c + 1].getValue() == tile) { // Right
+                        grid[r][c].setValue(tile);
+                        grid[r][c + 1].setValue(0);
                         return true;
                     }
                     return false; // Tile not adjacent to empty space

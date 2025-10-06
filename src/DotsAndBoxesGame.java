@@ -6,12 +6,10 @@
 
  import java.util.*;
 
-public class DotsAndBoxesGame {
+public class DotsAndBoxesGame extends Game {
     private DotsAndBoxesBoard board;
-    private boolean keepPlaying; 
-    private Player[] players;
+    private boolean keepPlaying;
     private int curPlayerIdx; //current player index
-    private Scanner in;
 
     public DotsAndBoxesGame(Scanner scanner) {
         this.players = new Player[2];
@@ -70,7 +68,7 @@ public class DotsAndBoxesGame {
 
     private void play() {
         while (!board.isFull()) {
-            board.displayBoard();
+            board.display();
 
             // current player
             Player current = players[curPlayerIdx];
@@ -98,7 +96,7 @@ public class DotsAndBoxesGame {
     }
 
     private void end(){
-        board.displayBoard();
+        board.display();
         showResult();
     }
 

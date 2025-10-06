@@ -3,10 +3,13 @@ import java.util.Scanner;
 public class SlidingPuzzleGame extends Game {
     private boolean playAgain;
     private SlidingPuzzleBoard board;
+    private Player player;
 
     public SlidingPuzzleGame(Scanner scanner) {
-        this.scanner = scanner;
+        this.in = scanner;
         this.playAgain = false;
+        this.players = new Player[1];
+        this.player = players[0];
     }
 
     public void run() {
@@ -14,7 +17,7 @@ public class SlidingPuzzleGame extends Game {
         String playerName;
         while (true) {
             System.out.print("What is your name? ");
-            playerName = scanner.nextLine().trim();
+            playerName = in.nextLine().trim();
             if (!playerName.isEmpty()) {
                 break;
             }
@@ -29,7 +32,7 @@ public class SlidingPuzzleGame extends Game {
             board.display();
             System.out.print(String.format("Congrats %s! You solved the sliding puzzle in %d moves! Play again?(y/n): ",
                     player.getName(), player.getScore()));
-            String input = scanner.nextLine();
+            String input = in.nextLine();
             input = input.toLowerCase();
             playAgain = input.equals("y") || input.equals("yes");
         } while (playAgain);
@@ -40,7 +43,7 @@ public class SlidingPuzzleGame extends Game {
             board.display();
             String msg = String.format("%s, which tile do you want to slide to the empty space? ",
                     player.getName());
-            int tile = readInt(scanner, msg);
+            int tile = readInt(msg);
             if (!board.slideTile(tile)) {
                 System.out.println("Invalid tile number, try again.");
             } else {
@@ -52,8 +55,8 @@ public class SlidingPuzzleGame extends Game {
     private void boardInput() {
         boolean validBoard = false;
         do {
-            int rows = readInt(scanner, "Number of Rows? ");
-            int cols = readInt(scanner, "Number of Columns? ");
+            int rows = readInt("Number of Rows? ");
+            int cols = readInt("Number of Columns? ");
             try {
                 board = new SlidingPuzzleBoard(rows, cols);
                 validBoard = true;
@@ -63,12 +66,12 @@ public class SlidingPuzzleGame extends Game {
         } while(!validBoard);
     }
 
-    private static int readInt(Scanner scanner, String msg) {
+    private int readInt(String msg) {
         while (true) {
             System.out.print(msg);
-            String in = scanner.nextLine().trim();
+            String num = in.nextLine().trim();
             try {
-                return Integer.parseInt(in);
+                return Integer.parseInt(num);
             } catch (NumberFormatException e) {
                 System.out.println("Not a valid integer, try again.");
             }
