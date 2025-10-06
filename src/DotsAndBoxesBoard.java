@@ -3,14 +3,14 @@ public class DotsAndBoxesBoard {
     private int cols;
     private Edge[][] horizontalEdges;    // (rows + 1) x cols
     private Edge[][] verticalEdges;   // rows x (cols + 1)
-    private char[][] boxWinners;
+    private Player[][] boxWinners;
 
     public DotsAndBoxesBoard(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
         this.horizontalEdges = new Edge[rows+1][cols];
         this.verticalEdges = new Edge[rows][cols+1];
-        this.boxWinners = new char[rows][cols];
+        this.boxWinners = new Player[rows][cols];
         initializeBoard();
     }
 
@@ -85,12 +85,12 @@ public class DotsAndBoxesBoard {
     private void checkForFullBoxes(Player player) {
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                if (boxWinners[r][c] == '\u0000') {
+                if (boxWinners[r][c] == null) {
                     if (horizontalEdges[r][c].isTaken() &&  // check four surrounding edges
                             horizontalEdges[r+1][c].isTaken() &&
                             verticalEdges[r][c].isTaken() /*shawn changed this to verticalEdges*/&&
                             verticalEdges[r][c+1].isTaken()) {
-                        boxWinners[r][c] = player.getName().charAt(0);
+                        boxWinners[r][c] = player;
                         player.incrementScore();
                     }
                 }
@@ -117,8 +117,19 @@ public class DotsAndBoxesBoard {
     }
 
     public void displayBoard() {
-        for (int r = 0; r < rows; r++) {
-            // Print top of boxes
+        System.out.println();
+
+        // Column indexes
+        System.out.print("    ");
+        for (int c = 0; c <= cols; c++) {
+            System.out.printf("%-4d", c);
+        }
+        System.out.println();
+
+        for (int r = 0; r <= rows; r++) {
+            System.out.printf("%3d ", r);
+
+            // Print horizontal edges
             for (int c = 0; c < cols; c++) {
                 System.out.print(".");
                 if (horizontalEdges[r][c].isTaken()) {
@@ -129,36 +140,26 @@ public class DotsAndBoxesBoard {
             }
             System.out.println(".");
 
-            // Print sides of boxes and box winners
-            for (int c = 0; c < cols; c++) {
-                if (verticalEdges[r][c].isTaken()) {
-                    System.out.print("|");
-                } else {
-                    System.out.print(" ");
-                }
+            if (r < rows) {
+                System.out.print("    ");
+                for (int c = 0; c <= cols; c++) {
+                    if (verticalEdges[r][c].isTaken()) {
+                        System.out.print("|");
+                    } else {
+                        System.out.print(" ");
+                    }
 
-                char owner = boxWinners[r][c];
-                if (owner == '\u0000') {
-                    System.out.print("   ");
-                } else {
-                    System.out.print(" " + owner + " ");
+                    if (c < cols) {
+                        if (boxWinners[r][c] != null) {
+                            System.out.print(" " + boxWinners[r][c].getName().charAt(0) + " ");
+                        } else {
+                            System.out.print("   ");
+                        }
+                    }
                 }
-            }
-            if (verticalEdges[r][cols].isTaken()) {
-                System.out.println("|");
-            } else {
-                System.out.println(" ");
+                System.out.println();
             }
         }
-        // Print last row
-        for (int c = 0; c < cols; c++) {
-            System.out.print(".");
-            if (horizontalEdges[rows][c].isTaken()) {
-                System.out.print("———");
-            } else {
-                System.out.print("   ");
-            }
-        }
-        System.out.println(".");
+        System.out.println();
     }
 }
