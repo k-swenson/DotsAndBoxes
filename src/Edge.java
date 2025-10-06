@@ -11,7 +11,7 @@ public class Edge {
         takenBy = null;
     }
 
-    public bool isTaken() {
+    public boolean isTaken() {
         return takenBy != null;
     }
 
