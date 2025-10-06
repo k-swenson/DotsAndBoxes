@@ -33,12 +33,20 @@ public class DotsAndBoxesGame {
             players[1] = new Player(name2);
             curPlayerIdx = 0;
 
-            // size of the board (min 1)
-            int rows = readInt("Enter board rows (min 1): ", 1);
-            int cols = readInt("Enter board columns (min 1): ", 1);
-            
-            // initialize the board
-            board = new DotsAndBoxesBoard(rows, cols);
+            boolean validBoard = false;
+            while (!validBoard) {
+                // size of the board (min 1)
+                int rows = readInt("Enter board rows (min 1): ", 1);
+                int cols = readInt("Enter board columns (min 1): ", 1);
+
+                // initialize the board
+                try {
+                    board = new DotsAndBoxesBoard(rows, cols);
+                    validBoard = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage() + ", try again.");
+                }
+            }
             play();
 
             // ask if want to play again

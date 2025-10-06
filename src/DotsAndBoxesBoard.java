@@ -1,4 +1,8 @@
 public class DotsAndBoxesBoard {
+    private int MIN_ROWS = 1;
+    private int MIN_COLS = 1;
+    private int MAX_ROWS = 50;
+    private int MAX_COLS = 50;
     private int rows;
     private int cols;
     private Edge[][] horizontalEdges;    // (rows + 1) x cols
@@ -6,12 +10,19 @@ public class DotsAndBoxesBoard {
     private Player[][] boxWinners;
 
     public DotsAndBoxesBoard(int rows, int cols) {
+        if (!validSize(rows, cols)) {
+            throw new IllegalArgumentException("Rows and cols must be between " + MIN_ROWS + " and " + MAX_ROWS);
+        }
         this.rows = rows;
         this.cols = cols;
         this.horizontalEdges = new Edge[rows+1][cols];
         this.verticalEdges = new Edge[rows][cols+1];
         this.boxWinners = new Player[rows][cols];
         initializeBoard();
+    }
+
+    private boolean validSize(int rows, int cols) {
+        return (rows >= MIN_ROWS && cols >= MIN_COLS && rows <= MAX_ROWS && cols <= MAX_COLS);
     }
 
     private void initializeBoard() {
