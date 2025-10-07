@@ -47,6 +47,7 @@ java Main
 ## Input/Output Example
 ---------------------------------------------------------------------------
 Output:
+<pre>
 =======================================
       Welcome to the Game Manager!     
 =======================================
@@ -60,9 +61,8 @@ Game Menu
 2) Sliding Puzzle
 3) Quit
 Enter your choice: 
-Input:
 1
-Output:
+
 =======================================
    CS611 Assignment 2: Dot and Boxes   
 =======================================
@@ -70,231 +70,144 @@ This is a two-player terminal game.
 Draw lines to connect the dots and form boxes.
 Try to complete as many boxes as possible!
 
-Enter Player 1's Name: 
-Input:
-Alice
-Output:
-Enter Player 2's Name: 
-Input:
-Bob
-Output:
-Enter board rows (min 1): 
-Input:
-2
-Output:
-Enter board columns (min 1): 
-Input:
-2
-Output:
-```text
-      0   1   2   
-  0 .   .   .
-    |   |   
-  1 .   .   .
-    |   |   
-  2 .   .   .
-```
-Alice's turn
-Enter row: 
-Input:
-0
-Output:
-Enter col: 
-Input:
-0
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-r
-Output:
-```text
-      0   1   2   
-  0 .———.   .
-    |   |   
-  1 .   .   .
-    |   |   
-  2 .   .   .
-```
-Bob's turn
-Enter row: 
-Input:
-0
-Output:
-Enter col: 
-Input:
-1
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-d
-Output:
-```text
-      0   1   2   
-  0 .———.   .
-    |   |   
-  1 .   .   .
-    |   |   
-  2 .   .   .
-```
-Alice's turn
-Enter row: 
-Input:
-1
-Output:
-Enter col: 
-Input:
-0
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-r
-Output:
-```text
-      0   1   2   
-  0 .———.   .
-    |   |   
-  1 .———.   .
-    |   |   
-  2 .   .   .
-```
-Bob's turn
-Enter row: 
-Input:
-0
-Output:
-Enter col: 
-Input:
-0
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-d
-Output:
-```text
-      0   1   2   
-  0 .———.   .
-    |   |   
-  1 .———.   .
-    |   |   
-  2 .   .   .
-```
-Alice's turn
-Enter row: 
-Input:
-1
-Output:
-Enter col: 
-Input:
-1
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-u
-Output:
-```text
-      0   1   2   
-  0 .———.———.
-    | A |   
-  1 .———.   .
-    |   |   
-  2 .   .   .
-```
-Alice's turn
-Enter row: 
-Input:
-1
-Output:
-Enter col: 
-Input:
-1
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-r
-Output:
-```text
-      0   1   2   
-  0 .———.———.
-    | A |   
-  1 .———.———.
-    |   |   
-  2 .   .   .
-```
-Bob's turn
-Enter row: 
-Input:
-1
-Output:
-Enter col: 
-Input:
-0
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-d
-Output:
-```text
-      0   1   2   
-  0 .———.———.
-    | A |   
-  1 .———.———.
-    |   |   
-  2 .———.   .
-```
-Alice's turn
-Enter row: 
-Input:
-2
-Output:
-Enter col: 
-Input:
-1
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-u
-Output:
-```text
-      0   1   2   
-  0 .———.———.
-    | A |   
-  1 .———.———.
-    | A |   
-  2 .———.   .
-```
-Alice's turn
-Enter row: 
-Input:
-2
-Output:
-Enter col: 
-Input:
-1
-Output:
-Enter direction (u/d/l/r for up, down, left or right): 
-Input:
-r
-Output:
-```text
-      0   1   2   
-  0 .———.———.
-    | A |   
-  1 .———.———.
-    | A |   
-  2 .———.———.
-```
+Enter Player 1's Name: aaa
+Enter Player 2's Name: bbb
+Enter board rows (min 1): 1
+Enter board columns (min 1): 1
+
+    0   1   
+  0 .   .
+         
+  1 .   .
+
+aaa's turn
+Enter row: 0
+Enter col: 0
+Enter direction (u/d/l/r for up, down, left or right): r
+
+    0   1   
+  0 .———.
+         
+  1 .   .
+
+bbb's turn
+Enter row: 0
+Enter col: 0
+Enter direction (u/d/l/r for up, down, left or right): d
+
+    0   1   
+  0 .———.
+    |    
+  1 .   .
+
+aaa's turn
+Enter row: 1
+Enter col: 1
+Enter direction (u/d/l/r for up, down, left or right): u
+
+    0   1   
+  0 .———.
+    |   |
+  1 .   .
+
+bbb's turn
+Enter row: 1
+Enter col: 1
+Enter direction (u/d/l/r for up, down, left or right): l
+
+    0   1   
+  0 .———.
+    | b |
+  1 .———.
+
+
 =======================================
            GAME OVER!                 
 =======================================
 Final Scores:
-Alice: 2 boxes
-Bob: 0 boxes
+aaa: 0 boxes
+bbb: 1 boxes
 
-🎉 Alice wins!
+🎉 bbb wins!
 =======================================
 
-Would you like to play again? (y/n): 
-Input:
-n
-Output:
+Would you like to play again? (y/n): n
 Thanks for playing! Goodbye!
+---------------------------------------
+Game Menu
+1) Dots and Boxes
+2) Sliding Puzzle
+3) Quit
+Enter your choice: 
+2
+
+Welcome to the Sliding Puzzle Game!
+What is your name? aaa
+Hi aaa! Customize the size of your sliding puzzle:
+Number of Rows? 2
+Number of Columns? 2
++-+-+
+|3|1|
++-+-+
+|2|0|
++-+-+
+aaa, which tile do you want to slide to the empty space? 1
++-+-+
+|3|0|
++-+-+
+|2|1|
++-+-+
+aaa, which tile do you want to slide to the empty space? 3
++-+-+
+|0|3|
++-+-+
+|2|1|
++-+-+
+aaa, which tile do you want to slide to the empty space? 2
++-+-+
+|2|3|
++-+-+
+|0|1|
++-+-+
+aaa, which tile do you want to slide to the empty space? 1
++-+-+
+|2|3|
++-+-+
+|1|0|
++-+-+
+aaa, which tile do you want to slide to the empty space? 3
++-+-+
+|2|0|
++-+-+
+|1|3|
++-+-+
+aaa, which tile do you want to slide to the empty space? 2
++-+-+
+|0|2|
++-+-+
+|1|3|
++-+-+
+aaa, which tile do you want to slide to the empty space? 1
++-+-+
+|1|2|
++-+-+
+|0|3|
++-+-+
+aaa, which tile do you want to slide to the empty space? 3
++-+-+
+|1|2|
++-+-+
+|3|0|
++-+-+
+Congrats aaa! You solved the sliding puzzle in 8 moves! Play again?(y/n): n
+---------------------------------------
+Game Menu
+1) Dots and Boxes
+2) Sliding Puzzle
+3) Quit
+Enter your choice: 
+3
+
+Goodbye!
+shawnhu@mac DotsAndBoxes % 
+</pre>
