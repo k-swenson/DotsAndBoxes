@@ -86,14 +86,14 @@ Enter board columns (min 1):
 Input:
 2
 Output:
-
+```text
       0   1   2   
   0 .   .   .
     |   |   
   1 .   .   .
     |   |   
   2 .   .   .
-
+```
 Alice's turn
 Enter row: 
 Input:
@@ -107,14 +107,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 r
 Output:
-
+```text
       0   1   2   
   0 .———.   .
     |   |   
   1 .   .   .
     |   |   
   2 .   .   .
-
+```
 Bob's turn
 Enter row: 
 Input:
@@ -128,14 +128,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 d
 Output:
-
+```text
       0   1   2   
   0 .———.   .
     |   |   
   1 .   .   .
     |   |   
   2 .   .   .
-
+```
 Alice's turn
 Enter row: 
 Input:
@@ -149,14 +149,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 r
 Output:
-
+```text
       0   1   2   
   0 .———.   .
     |   |   
   1 .———.   .
     |   |   
   2 .   .   .
-
+```
 Bob's turn
 Enter row: 
 Input:
@@ -170,14 +170,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 d
 Output:
-
+```text
       0   1   2   
   0 .———.   .
     |   |   
   1 .———.   .
     |   |   
   2 .   .   .
-
+```
 Alice's turn
 Enter row: 
 Input:
@@ -191,14 +191,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 u
 Output:
-
+```text
       0   1   2   
   0 .———.———.
     | A |   
   1 .———.   .
     |   |   
   2 .   .   .
-
+```
 Alice's turn
 Enter row: 
 Input:
@@ -212,14 +212,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 r
 Output:
-
+```text
       0   1   2   
   0 .———.———.
     | A |   
   1 .———.———.
     |   |   
   2 .   .   .
-
+```
 Bob's turn
 Enter row: 
 Input:
@@ -233,14 +233,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 d
 Output:
-
+```text
       0   1   2   
   0 .———.———.
     | A |   
   1 .———.———.
     |   |   
   2 .———.   .
-
+```
 Alice's turn
 Enter row: 
 Input:
@@ -254,14 +254,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 u
 Output:
-
+```text
       0   1   2   
   0 .———.———.
     | A |   
   1 .———.———.
     | A |   
   2 .———.   .
-
+```
 Alice's turn
 Enter row: 
 Input:
@@ -275,14 +275,14 @@ Enter direction (u/d/l/r for up, down, left or right):
 Input:
 r
 Output:
-
+```text
       0   1   2   
   0 .———.———.
     | A |   
   1 .———.———.
     | A |   
   2 .———.———.
-
+```
 =======================================
            GAME OVER!                 
 =======================================
